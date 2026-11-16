@@ -1,0 +1,337 @@
+
+:root {
+    --color-text: #404040;
+    --color-background: #ffffff;
+    --color-surface: #ffffff;
+    --color-primary: #8c1d40;
+    --color-secondary: #5c6670;
+    --color-accent: #ffc627;
+    --color-border: #d0d0d0;
+    --color-muted: #5c6670;
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --radius: 1rem;
+    --measure: 68ch;
+    --layer-base: 0;
+    --layer-raised: 1;
+    --layer-sticky: 2;
+    --layer-overlay: 3;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+}
+
+body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+nav,
+.eyebrow,
+.issue-badge {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+h1 {
+    max-width: 16ch;
+    margin: 1rem 0;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.035em;
+    overflow-wrap: break-word;
+}
+
+h2 {
+    margin-top: 0;
+    color: var(--color-primary);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+    max-width: var(--measure);
+}
+
+a {
+    color: var(--color-primary);
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: #632039;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.feature-header {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(4rem, 8vw, 7rem)
+             clamp(1.25rem, 6vw, 5rem);
+    background: var(--color-primary);
+    color: #ffffff;
+    border-bottom: 0.5rem solid var(--color-accent);
+}
+
+.feature-header::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 auto;
+    width: 30%;
+    height: 45%;
+    background: rgba(255, 255, 255, 0.035);
+    border-radius: 100% 0 0 0;
+    pointer-events: none;
+    z-index: var(--layer-base);
+}
+
+.feature-header > * {
+    position: relative;
+    z-index: var(--layer-raised);
+}
+
+.feature-header h1 {
+    color: #ffffff;
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.lede {
+    max-width: 58ch;
+    margin-bottom: 0;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+.issue-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: #191919;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: var(--layer-overlay);
+}
+
+main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    width: min(100%, 78rem);
+    margin-inline: auto;
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+article {
+    min-width: 0;
+}
+
+article section {
+    display: flow-root;
+    margin-block: var(--space-4);
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    scroll-margin-top: 2rem;
+}
+
+article p {
+    margin-block: 1rem;
+}
+
+article p:last-child {
+    margin-bottom: 0;
+}
+
+.story-guide {
+    align-self: start;
+    padding: var(--space-3);
+    background: #f5f5f5;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.story-guide h2 {
+    font-size: 1.1rem;
+}
+
+.story-guide nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.story-guide a {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.5rem;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.story-guide a:hover,
+.story-guide a:focus-visible {
+    background: #ffffff;
+    text-decoration: underline;
+}
+
+.pull-quote {
+    position: relative;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #fff7df;
+    border-left: 0.4rem solid var(--color-accent);
+    border-radius: 0.75rem;
+    color: var(--color-primary);
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-style: italic;
+    line-height: 1.5;
+    z-index: var(--layer-raised);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.feature-figure {
+    margin: 1.5rem 0 2rem;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #f5f5f5;
+}
+
+.feature-figure img {
+    width: 100%;
+    border-radius: 0.75rem;
+}
+
+figcaption {
+    padding: 0.8rem 0.3rem 0.2rem;
+    color: var(--color-muted);
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+}
+
+.shape-portrait {
+    width: min(100%, 15rem);
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+}
+
+@supports (clip-path: polygon(0 0, 100% 0, 100% 100%)) {
+    .feature-figure img {
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            94% 85%,
+            75% 100%,
+            0 94%
+        );
+    }
+}
+
+.documentation {
+    padding: var(--space-4);
+    background: #f5f5f5;
+    border-radius: var(--radius);
+}
+
+.documentation p {
+    max-width: var(--measure);
+}
+
+@media (min-width: 52rem) {
+    main {
+        grid-template-columns: minmax(12rem, 15rem)
+                               minmax(0, 1fr);
+        align-items: start;
+    }
+
+    .story-guide {
+        position: sticky;
+        top: 1rem;
+        z-index: var(--layer-sticky);
+    }
+
+    .pull-quote {
+        margin-left: -2rem;
+        margin-right: 1rem;
+        box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.08);
+    }
+
+    .documentation {
+        grid-column: 1 / -1;
+    }
+
+    @supports (shape-outside: circle(50%)) {
+        .shape-portrait {
+            float: left;
+            width: min(38%, 15rem);
+            margin: 0 1.5rem 1rem 0;
+            shape-outside: circle(50%);
+            shape-margin: 1rem;
+        }
+    }
+}
+
+@media (max-width: 51.999rem) {
+    .issue-badge {
+        position: static;
+        display: inline-block;
+        margin-top: 1.5rem;
+    }
+
+    .story-guide {
+        position: static;
+    }
+
+    .pull-quote {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}

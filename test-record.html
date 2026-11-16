@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test Record - Layered Feature Story</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #ffffff;
+            color: #404040;
+            font-family: Arial, sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .feature-header {
+            padding: 4rem max(1.5rem, calc((100% - 900px) / 2));
+            background: #8c1d40;
+            color: #ffffff;
+            border-bottom: 0.5rem solid #ffc627;
+        }
+
+        h1 {
+            max-width: 900px;
+            margin: 0 0 1.5rem;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.2;
+            overflow-wrap: break-word;
+        }
+
+        .feature-header p {
+            margin: 0.5rem 0;
+        }
+
+        main {
+            display: block;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        article {
+            display: block;
+            width: 100%;
+        }
+
+        article section {
+            display: block;
+            width: 100%;
+            margin: 0 0 1.5rem;
+            padding: 2rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 1rem;
+            background: #ffffff;
+        }
+
+        h2 {
+            margin: 0 0 1rem;
+            color: #8c1d40;
+            font-size: 1.6rem;
+            line-height: 1.3;
+        }
+
+        p {
+            margin: 0 0 1rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: #8c1d40;
+            text-underline-offset: 0.2em;
+        }
+
+        a:focus-visible {
+            outline: 3px solid #ffc627;
+            outline-offset: 4px;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .feature-header {
+                padding: 3rem 1.25rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            article section {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="feature-header">
+        <h1>Layered Feature Story: Test Record</h1>
+        <p>New Jersey: From Colonial Times to Today</p>
+        <p>November 16, 2026</p>
+        <p>Browser: Google Chrome</p>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <h2>Responsive Layout</h2>
+                <p>
+                    I checked how my website looks at different
+                    screen sizes, including 320px, 768px, and
+                    1280px. I also worked on testing the page
+                    at 200% zoom. I still need to confirm the
+                    final results for these tests.
+                </p>
+            </section>
+
+            <section>
+                <h2>Keyboard and Navigation</h2>
+                <p>
+                    I tested the website using the Tab key
+                    to make sure I could navigate through
+                    the links without using a mouse.
+                    Everything worked correctly.
+                </p>
+                <p>
+                    I also tested the sticky navigation
+                    at 1280px. The navigation stayed in
+                    place while I scrolled through the article.
+                </p>
+            </section>
+
+            <section>
+                <h2>Content Growth</h2>
+                <p>
+                    For this test, I repeated the main title
+                    to see what would happen if it was much
+                    longer. The title adjusted to the available
+                    space without getting cut off.
+                </p>
+                <p>
+                    I also duplicated a paragraph in the first
+                    section. The text stayed inside its
+                    container, and I did not notice any
+                    overlapping problems.
+                </p>
+                <p>
+                    After testing, I changed the title and
+                    paragraph back to their original versions.
+                </p>
+            </section>
+
+            <section>
+                <h2>CSS Fallbacks</h2>
+                <p>
+                    I used Chrome DevTools to disable the
+                    clip-path property on the main illustration.
+                    The image was still visible without the
+                    decorative shape, so the fallback worked.
+                </p>
+                <p>
+                    I also located the shape-outside property
+                    used for the illustration in the Industrial
+                    Growth section. I still need to confirm
+                    the final result of that test.
+                </p>
+            </section>
+
+            <section>
+                <h2>HTML Validation</h2>
+                <p>
+                    I checked my HTML using the W3C HTML
+                    Validator. It showed a warning about
+                    the article element not having its own
+                    heading. The sections already have
+                    headings, so I kept the structure.
+                    No HTML errors were reported during
+                    my review.
+                </p>
+                <p>
+                    <a href="https://validator.w3.org/">
+                        W3C HTML Validator
+                    </a>
+                </p>
+            </section>
+
+            <section>
+                <h2>CSS Validation</h2>
+                <p>
+                    When I checked my CSS using the W3C CSS
+                    Validator, it showed three errors related
+                    to shape-outside and shape-margin.
+                    These properties are part of the
+                    assignment requirements, so I kept them.
+                </p>
+                <p>
+                    I used a fallback so the image and text
+                    can still be displayed when shape-outside
+                    is not supported.
+                </p>
+                <p>
+                    <a href="https://jigsaw.w3.org/css-validator/">
+                        W3C CSS Validator
+                    </a>
+                </p>
+            </section>
+
+            <section>
+                <h2>Test Evidence</h2>
+                <p>
+                    I took screenshots during testing to
+                    document how the website responds to
+                    different screen sizes, longer content,
+                    and CSS changes.
+                </p>
+                <ul>
+                    <li>Responsive layout screenshots</li>
+                    <li>200% zoom screenshot, if completed</li>
+                    <li>Long title and duplicated paragraph</li>
+                    <li>Clip-path fallback</li>
+                    <li>Shape-outside fallback, if completed</li>
+                    <li>HTML validation</li>
+                    <li>CSS validation</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>AI Disclosure</h2>
+                <p>
+                    I used ChatGPT to help me write and debug
+                    the HTML and CSS for this assignment.
+                    I also used it to help troubleshoot problems,
+                    prepare the composition plan, and understand
+                    how to test the website. I reviewed the code
+                    and tested the website myself using Chrome
+                    and DevTools.
+                </p>
+            </section>
+        </article>
+    </main>
+</body>
+</html>

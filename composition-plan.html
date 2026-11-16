@@ -1,0 +1,409 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Composition Plan | New Jersey History</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 90rem;
+            margin: auto;
+            padding: 1.5rem;
+            background: #ffffff;
+            color: #404040;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2 {
+            color: #8c1d40;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+        }
+
+        th,
+        td {
+            padding: 0.8rem;
+            border: 1px solid #d0d0d0;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #8c1d40;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        a {
+            color: #8c1d40;
+        }
+
+        a:focus-visible {
+            outline: 3px solid #ffc627;
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>L6 · Composition Plan</h1>
+
+    <p>Project: New Jersey: From Colonial Times to Today</p>
+
+    <p>
+        I used CSS Grid to organize my article and kept
+        the content in a normal reading order. I used
+        positioning for the badge, navigation, header
+        decoration, and pull quote. I also included
+        fallback styles so the content stays readable
+        if some CSS properties are not supported.
+    </p>
+
+    <h2>Layout and Positioning Decisions</h2>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Element</th>
+                    <th scope="col">Purpose</th>
+                    <th scope="col">Normal-flow baseline</th>
+                    <th scope="col">Technique</th>
+                    <th scope="col">Containing block / layer</th>
+                    <th scope="col">Fallback</th>
+                    <th scope="col">Required test</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Issue badge</td>
+                    <td>Identifies the feature.</td>
+                    <td>Appears after the introduction.</td>
+                    <td>Absolute positioning.</td>
+                    <td>
+                        The header is positioned relative
+                        and creates an isolated stacking context.
+                    </td>
+                    <td>
+                        The badge returns to normal flow
+                        on smaller screens.
+                    </td>
+                    <td>
+                        Check at 320px, 768px, and 1280px
+                        to make sure nothing overlaps.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Story navigation</td>
+                    <td>
+                        Helps readers move between sections.
+                    </td>
+                    <td>
+                        Appears before the article.
+                    </td>
+                    <td>
+                        Sticky positioning on wider screens.
+                    </td>
+                    <td>
+                        The main Grid container limits
+                        the sticky navigation.
+                    </td>
+                    <td>
+                        Normal positioning on smaller screens.
+                    </td>
+                    <td>
+                        Check scrolling, keyboard navigation,
+                        and links.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Pull quote</td>
+                    <td>
+                        Highlights an important part
+                        of New Jersey's history.
+                    </td>
+                    <td>
+                        Appears between paragraphs.
+                    </td>
+                    <td>
+                        Relative positioning with
+                        a negative horizontal margin.
+                    </td>
+                    <td>
+                        Uses the raised layer.
+                    </td>
+                    <td>
+                        Negative margins are removed
+                        on smaller screens.
+                    </td>
+                    <td>
+                        Check overlapping and 200% zoom.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Header decoration</td>
+                    <td>
+                        Adds a decorative shape.
+                    </td>
+                    <td>
+                        The header works without it.
+                    </td>
+                    <td>
+                        Absolute pseudo-element
+                        with a rounded corner.
+                    </td>
+                    <td>
+                        Positioned inside the header
+                        with pointer-events disabled.
+                    </td>
+                    <td>
+                        The header remains readable
+                        without the decoration.
+                    </td>
+                    <td>
+                        Check that links and focus
+                        are not blocked.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Article sections</td>
+                    <td>
+                        Separate the different
+                        historical periods.
+                    </td>
+                    <td>
+                        Follow the normal reading order.
+                    </td>
+                    <td>
+                        Rounded borders.
+                    </td>
+                    <td>
+                        No extra stacking context.
+                    </td>
+                    <td>
+                        Square corners would not
+                        affect the content.
+                    </td>
+                    <td>
+                        Test longer content and
+                        smaller screens.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Feature illustration</td>
+                    <td>
+                        Adds a visual element
+                        to the introduction.
+                    </td>
+                    <td>
+                        Figure and caption
+                        stay in normal flow.
+                    </td>
+                    <td>
+                        Polygon clip-path.
+                    </td>
+                    <td>
+                        Only the image is clipped.
+                    </td>
+                    <td>
+                        The image keeps its rounded
+                        rectangular shape.
+                    </td>
+                    <td>
+                        Disable clip-path and check
+                        that the image remains visible.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Industrial illustration</td>
+                    <td>
+                        Allows text to wrap
+                        around the image.
+                    </td>
+                    <td>
+                        Image appears before the paragraphs.
+                    </td>
+                    <td>
+                        Float, shape-outside,
+                        and shape-margin.
+                    </td>
+                    <td>
+                        The section contains the float
+                        using flow-root.
+                    </td>
+                    <td>
+                        Normal float wrapping on wider
+                        screens if shapes are unsupported.
+                        Centered image on smaller screens.
+                    </td>
+                    <td>
+                        Disable shape-outside
+                        and check text readability.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Layer Scale</h2>
+
+    <p>
+        I used four z-index values to organize the layers:
+        base (0), raised (1), sticky (2), and overlay (3).
+        The pull quote uses the raised layer, the navigation
+        uses the sticky layer, and the badge uses the overlay
+        layer. The header also has its own stacking context
+        to keep its decoration behind the text.
+    </p>
+
+    <h2>Responsive Design</h2>
+
+    <p>
+        When the screen is smaller than 52rem, the layout
+        changes to one column. The badge and navigation
+        return to normal positioning, the pull quote
+        no longer uses negative margins, and the
+        illustration is centered instead of floated.
+    </p>
+
+    <h2>Browser Support and Fallback Record</h2>
+
+    <p>
+        Documentation prepared November 16, 2026.
+        I used the MDN documentation to identify browser
+        support and fallback options for the CSS properties
+        in this project. The tests I completed were done
+        in Google Chrome.
+    </p>
+
+    <ul>
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">
+                MDN: position
+            </a>
+            — Sticky positioning is widely supported
+            in modern browsers. On smaller screens,
+            the navigation returns to normal flow.
+        </li>
+
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index">
+                MDN: z-index
+            </a>
+            — I used z-index values to control which
+            elements appear in front of others.
+        </li>
+
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius">
+                MDN: border-radius
+            </a>
+            — Rounded corners are decorative, so
+            the content would still work without them.
+        </li>
+
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path">
+                MDN: clip-path
+            </a>
+            — I used clip-path to create a decorative
+            shape on the main illustration. When I
+            disabled it in Chrome DevTools, the image
+            remained visible.
+        </li>
+
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside">
+                MDN: shape-outside
+            </a>
+            — I used this property to wrap text around
+            the industrial illustration. If it is not
+            supported, the text can still wrap around
+            the regular rectangular float.
+        </li>
+
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/shape-margin">
+                MDN: shape-margin
+            </a>
+            — This property adds space between the
+            image shape and the text. Regular margins
+            provide spacing if it is not supported.
+        </li>
+    </ul>
+
+    <h2>Testing Notes</h2>
+
+    <p>
+        I tested the website at different screen sizes
+        using Chrome DevTools. I also tested keyboard
+        navigation with the Tab key and checked the
+        sticky navigation while scrolling.
+    </p>
+
+    <p>
+        For the content growth test, I repeated the
+        main title and duplicated a paragraph.
+        Both adjusted without being cut off or overlapping.
+        I restored the original content afterward.
+    </p>
+
+    <p>
+        I also tested the clip-path fallback.
+        When I disabled the property, the image
+        remained visible without its decorative shape.
+        The shape-outside fallback and 200% zoom
+        results still need final confirmation.
+    </p>
+
+    <p>
+        The HTML validator reported a warning about
+        the article element not having its own heading.
+        The CSS validator reported three errors
+        involving shape-outside and shape-margin.
+        I kept these properties because they are
+        required for the assignment.
+    </p>
+
+    <h2>AI Disclosure</h2>
+
+    <p>
+        I used ChatGPT to help me write and debug
+        the HTML and CSS for this assignment.
+        I also used it to help troubleshoot problems,
+        prepare the composition plan, and understand
+        how to test the website. I reviewed the code
+        and tested the website myself using Chrome
+        and DevTools.
+    </p>
+
+    <p>
+        <a href="index.html">Return to the story</a>
+    </p>
+</body>
+</html>
